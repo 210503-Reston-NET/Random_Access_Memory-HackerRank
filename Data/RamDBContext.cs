@@ -10,6 +10,8 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<TaskItem>().HasKey(obj => obj.TaskID);
+            modelBuilder.Entity<TaskItem>().Property(obj => obj.TaskID).ValueGeneratedOnAdd();
         }
     }
 }
