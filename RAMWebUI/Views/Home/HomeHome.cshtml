@@ -3,8 +3,18 @@
     ViewData["Title"] = "HomeHome";
 }
 
-<div class="col-4">
-
+<div class="col-4" id="toDo">
+    @foreach (t in Model)
+    {@if (t.stage == 1)
+        {
+            <div>
+                <button class="delete">x</button>
+                <p>Model.Message</p>
+                <button onclick="">left</button>
+                <button onclick="">right</button>
+            </div>
+        }
+}
 </div>
 
 @section Scripts {
