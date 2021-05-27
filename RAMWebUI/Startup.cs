@@ -8,8 +8,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+using Microsoft.AspNetCore.Http;
+using JavaScriptEngineSwitcher.ChakraCore;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using React.AspNet;
+=======
 using Data;
 using Microsoft.EntityFrameworkCore;
+>>>>>>> 67e6bfbe3cb582845425329029eb934687a2e5ed
 
 namespace RAMWebUI
 {
@@ -25,6 +32,14 @@ namespace RAMWebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+            // Make sure a JS engine is registered, or you will get an error!
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName)
+            .AddChakraCore();
+
+            services.AddControllersWithViews();
             services.AddDbContext<RamDBContext>(options =>options.UseNpgsql(parseElephantSQLURL(this.Configuration.GetConnectionString("RamDB"))));
             services.AddScoped<Database>();
             services.AddControllersWithViews();           
@@ -55,6 +70,26 @@ namespace RAMWebUI
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            // Initialise ReactJS.NET. Must be before static files.
+            app.UseReact(config =>
+            {
+            // If you want to use server-side rendering of React components,
+            // add all the necessary JavaScript files here. This includes
+            // your components as well as all of their dependencies.
+            // See http://reactjs.net/ for more information. Example:
+            config
+                .AddScript("~/js/First.jsx");
+            //  .AddScript("~/js/Second.jsx");
+
+            // If you use an external build too (for example, Babel, Webpack,
+            // Browserify or Gulp), you can improve performance by disabling
+            // ReactJS.NET's version of Babel and loading the pre-transpiled
+            // scripts. Example:
+            //config
+            //  .SetLoadBabel(false)
+            //  .AddScriptWithoutTransform("~/js/bundle.server.js");
+            });
             app.UseStaticFiles();
 
             app.UseRouting();
