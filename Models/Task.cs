@@ -2,9 +2,9 @@
 
 namespace Models
 {
-    public class Task
+    public class TaskItem
     {
-        public Task(){
+        public TaskItem(){
             
         }
 
@@ -12,7 +12,7 @@ namespace Models
             public string Title { get; set; }
             public string Description { get; set; }
             public DateTime Created { get; set; }          
-            public DataTime Finished { get; set; }
+            public DateTime Finished { get; set; }
             public int stage { get; set; }
             public int priority { get; set; }
 
