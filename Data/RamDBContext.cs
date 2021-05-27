@@ -7,7 +7,7 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
-            base.OnModel.Creating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
