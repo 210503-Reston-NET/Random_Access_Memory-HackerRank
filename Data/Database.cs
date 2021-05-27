@@ -9,6 +9,7 @@ namespace Data
         public Database(RamDBContext context){
             _context = context;
         }
+        
 
 
     }
