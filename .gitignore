@@ -586,3 +586,4 @@ FodyWeavers.xsd
 *.tlog
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,macos,windows,aspnetcore,linux,visualstudio,visualstudiocode
+/RAMWebUI/appsettings.json
