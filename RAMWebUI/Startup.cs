@@ -100,6 +100,11 @@ namespace RAMWebUI
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=HomeHome}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "homehome",
+                    pattern: "/"
+                );
             });
         }
     }
