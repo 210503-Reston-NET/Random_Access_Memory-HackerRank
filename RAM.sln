@@ -3,13 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAMWebUI", "RAMWebUI\RAMWebUI.csproj", "{A760298B-A0FF-483A-8A2A-CD3BFC8DFE00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMWebUI", "RAMWebUI\RAMWebUI.csproj", "{A760298B-A0FF-483A-8A2A-CD3BFC8DFE00}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2442EF2-8A85-4C82-8973-EF4E76283788} = {A2442EF2-8A85-4C82-8973-EF4E76283788}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{D9109E9A-786F-4043-B201-B61CDA1D42A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{D9109E9A-786F-4043-B201-B61CDA1D42A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAMBL", "RAMBL\RAMBL.csproj", "{A2442EF2-8A85-4C82-8973-EF4E76283788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMBL", "RAMBL\RAMBL.csproj", "{A2442EF2-8A85-4C82-8973-EF4E76283788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
