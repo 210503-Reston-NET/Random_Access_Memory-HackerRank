@@ -79,11 +79,32 @@ body {
 .stagebox
 {
     border-style: double;
-    background-color: darkgray;
+    background-color: #353c7e;
+}
+
+.stagebox a {
+    padding: 20px;
+    background-color: #0366d6;
 }
 
 .createbox
 {
     padding: 10px;
     background-color: darkgreen;
+}
+
+.stage1task {
+    border-style: double;
+    background-color: #353c7e;
+    border-width: thick;
+}
+.stage2task {
+    border-style: double;
+    background-color: #d65d0e;
+    border-width: thick;
+}
+.stage3task {
+    border-style: double;
+    background-color: #d65d0e;
+    border-width: thick;
 }
