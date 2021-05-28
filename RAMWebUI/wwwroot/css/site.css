@@ -57,6 +57,12 @@ html {
   position: relative;
   min-height: 100%;
 }
+.stagebox a {
+  padding: 5px;
+  background-color: #0366d6;
+  border-radius: 10px;
+  
+}
 
 body {
   /* Margin bottom by footer height */
