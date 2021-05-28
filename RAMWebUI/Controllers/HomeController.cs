@@ -29,7 +29,7 @@ namespace RAMWebUI.Controllers
         }
         public IActionResult HomeHome()
         {
-            List<TaskItemVM> taskItemVMs = _bussinessLayer.GetAllTasks().Select(taskItem => new TaskItemVM(taskItem))
+            List<TaskItemVM> taskItemVMs = _bussinessLayer.GetAllTasks().Select(taskItem => new TaskItemVM(taskItem)).OrderByDescending(x => x.priority) 
                 .ToList();
             return View(taskItemVMs);
         }
@@ -44,6 +44,7 @@ namespace RAMWebUI.Controllers
         {
             TaskItem task = _bussinessLayer.GetTask(id);
             task.stage += 1;
+            task.Finished = DateTime.Now;
             _bussinessLayer.UpdateTask(task);
             return RedirectToAction(nameof(HomeHome));
         }
