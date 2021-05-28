@@ -16,8 +16,8 @@
                 @if (t.stage == 1){
                         <div class="stage1task justify-content-center">
                             @Html.ActionLink("X", "Delete", new { id = t.TaskID })
-                            <h1>@t.Title</h1>'
-                            <h5>Date Created:</h5>'
+                            <h1>@t.Title</h1>
+                            <h5>Date Created:</h5>
                             <p>@t.Created</p>
                             <p>@t.Description</p>
                             @Html.ActionLink(">", "UpdateAdd", new {id = t.TaskID})
