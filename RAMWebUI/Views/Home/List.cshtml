@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RAMWebUI.Models.TaskItemVM>
+
+@{
+    ViewData["Title"] = "Store";
+}
+
+<h1>Store</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Finished)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.priority)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.stage)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TaskID)
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
