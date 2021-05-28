@@ -6,13 +6,13 @@
 <div class="contianer">
     @* this row contains 3 cols that render divs that represent the tasks *@
     <div class="row">
-        @foreach (var t in Model){
+        @foreach (TaskItemVM t in Model){
             <div class="col-3" id="toDo">
             @if (t.stage == 1){
                     <div data-stage=""+t.stage >
                         @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
                         <div style="visibility: hidden;">t.id
-                        <div style="visibility: hiddden;">t.stage
+                        <div style="visibility: hidden;">t.stage
                             <button class="delete" onclick="remove()">x</button>
                             <p>t.Message</p>
                             <button onclick="leftClick()">left</button>
@@ -26,7 +26,7 @@
             @if (t.stage == 2){
                     <div data-stage=""+t.stage >
                         <div style="visibility: hidden;">t.id
-                        <div style="visibility: hiddden;">t.stage
+                        <div style="visibility: hidden;">t.stage
                             <button class="delete" onclick="remove()">x</button>
                             <p>t.Message</p>
                             <button onclick="leftClick()">left</button>
@@ -40,7 +40,7 @@
             @if (t.stage == 3){
                     <div data-stage=""+t.stage >
                         <div style="visibility: hidden;">t.id
-                        <div style="visibility: hiddden;">t.stage
+                        <div style="visibility: hidden;">t.stage
                             <button class="delete" onclick="remove()">x</button>
                             <p>t.Message</p>
                             <button onclick="leftClick()">left</button>
@@ -82,7 +82,7 @@
         $.ajax({
             type: 'DELETE',
             @* the name of the httpPOST method needs to be entered in here *@
-            url: @Html.ActionLink("Delete", "Delete", new {id = 1}),
+            url: '@Url.Action({the name of method here})',
             dataType: 'json',
             data: JSON.stringify(package)
         })
@@ -97,7 +97,7 @@
         $.ajax({
             type: 'POST',
             @* the name of the httpPOST method needs to be entered in here *@
-            url: @Html.ActionLink("post?", "thing", new {id = 1}),
+            url: '@Url.Action({the name of method here})',
             dataType: 'json',
             data: JSON.stringify(package)
         })

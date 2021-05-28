@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RAMWebUI.Models;
+using RAMBL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,10 +13,12 @@ namespace RAMWebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IBussiness _BL;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBussiness BussinessLayer)
         {
             _logger = logger;
+            _BL = BussinessLayer;
         }
 
         public IActionResult Index()
@@ -26,6 +29,27 @@ namespace RAMWebUI.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        // GET: ../Home/Delete
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        // POST: ../Home/Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(TaskItemVM task)
+        {
+            try
+            {
+                _BL.RemoveTask(new TaskItem() );
+                return RedirectToAction(nameof(Index));
+            } catch (Exception e)
+            {
+                return View();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
