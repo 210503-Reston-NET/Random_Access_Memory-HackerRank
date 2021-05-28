@@ -8,9 +8,9 @@
    
         @foreach (TaskItemVM t in Model){
             <div class="row">
-                <div class="col-3" id="toDo">
+                <div class="col-3 stagebox" id="toDo">
                 @if (t.stage == 1){
-                        <div data-stage=""+t.stage >
+                        <div data-stage=""+t.stage class="taskbox">
                             @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
                             <div style="visibility: hidden;">@t.TaskID</div>
                             <div style="visibility: hidden;">@t.stage</div>
@@ -21,9 +21,9 @@
                         </div>
                 }
                 </div>
-                <div class="col-3" id="inProgress">
+                <div class="col-3 stagebox" id="inProgress">
                 @if (t.stage == 2){
-                        <div data-stage=""+t.stage >
+                        <div data-stage=""+t.stage class="taskbox">
                             <div style="visibility: hidden;"></div>
                             <div style="visibility: hidden;">@t.stage</div>
                             
@@ -35,7 +35,7 @@
                         </div>
                 }
                 </div>
-                <div class="col-3" id="complete">
+                <div class="col-3 stagebox" id="complete">
                 @if (t.stage == 3){
                         <div data-stage=""+t.stage >
                             <div style="visibility: hidden;">@t.TaskID</div>
@@ -46,12 +46,11 @@
                                 <button onclick="rightClick()">right</button>
                             
                         </div>
-                }
+                }   
                 </div>
-
             </div>
         }
-
+          <a asp-action="Create" class="btn btn-primary">Create A Task</a>
     </div>
 
 
