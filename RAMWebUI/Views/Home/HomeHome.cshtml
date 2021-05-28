@@ -4,110 +4,51 @@
 }
 
 <div class="contianer">
-    @* this row contains 3 cols that render divs that represent the tasks *@
-   
+
+   <div class="row">
+       <div class="col-3">To Do</div>
+       <div class="col-3">In Progress</div>
+       <div class="col-3">Complete</div>
+   </div>
         @foreach (TaskItemVM t in Model){
-            <div class="row">
+        <div class="row">
                 <div class="col-3 stagebox" id="toDo">
                 @if (t.stage == 1){
-
-                    <div data-stage="" +t.stage class="stage1task">
-                        @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
-                        <div style="visibility: hidden;">@t.TaskID</div>
-                        <div style="visibility: hidden;">@t.stage</div>
-                        @Html.ActionLink("X", "Delete", new { id = t.TaskID })
-                        <h1>@t.Title</h1>
-                        <p>@t.Description</p>
-                        <button onclick="leftClick()">left</button>
-                        @Html.ActionLink("Right", "UpdateAdd", new { id = t.TaskID })
-
+                        <div class="taskbox justif-content-center">
+                            @Html.ActionLink("X", "Delete", new { id = t.TaskID })
+                            <h1>@t.Title</h1>
+                            <p>@t.Description</p>
+                            @Html.ActionLink(">", "UpdateAdd", new {id = t.TaskID})
                     </div>
                 }
                 </div>
                 <div class="col-3 stagebox" id="inProgress">
                 @if (t.stage == 2){
-                    <div data-stage="" +t.stage class="stage2task">
-                        <div style="visibility: hidden;"></div>
-                        <div style="visibility: hidden;">@t.stage</div>
-
+                    <div class="taskbox justif-content-center">
                         @Html.ActionLink("X", "Delete", new { id = t.TaskID })
                         <h1>@t.Title</h1>
                         <p>@t.Description</p>
-                        @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
-                        @Html.ActionLink("Right", "UpdateAdd", new { id = t.TaskID })
-
+                        @Html.ActionLink("<", "UpdateDec", new { id = t.TaskID })
+                        @Html.ActionLink(">", "UpdateAdd", new { id = t.TaskID })
                     </div>
                 }
                 </div>
                 <div class="col-3 stagebox" id="complete">
                 @if (t.stage == 3){
-                    <div data-stage="" +t.stage class="stage3task">
-                        <div style="visibility: hidden;">@t.TaskID</div>
-                        <div style="visibility: hidden;">@t.stage</div>
+                    <div class="taskbox justif-content-center">
                         @Html.ActionLink("X", "Delete", new { id = t.TaskID })
                         <h1>@t.Title</h1>
                         <p>@t.Description</p>
-                        @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
-                        <button onclick="rightClick()">right</button>
+                        @Html.ActionLink("<", "UpdateDec", new { id = t.TaskID })
 
                     </div>
                 }
                 </div>
-            </div>
+        </div>
         }
           <a asp-action="Create" class="btn btn-primary">Create A Task</a>
     </div>
 
-
-
-@* this script sends calls to the controller via the URL Actions below *@
-@* when making the controllers to handle the requests set them to recive 1 of TaskItemWM *@
-<script>
-   
-    @* sets the stage value +1 *@
-    function rigthClick(e){
-        const stage = $(e.target).parent().val()
-        if(stage < 3){
-            send((stage +1))
-        }
-    }
-    @* sets the stage value -1 *@
-    function leftClick(e){
-        const stage = $(e.target).parent().val()
-        if(stage >= 1){
-            send((stage -1))
-        }
-    }
-    @* sends the id in a Model to the [httpDelete] *@
-    function remove(e){
-        const package ={
-             @* these key names need to match the Model *@
-            id: $(e.target).parent().parent().val(),
-        }
-        $.ajax({
-            type: 'DELETE',
-            @* the name of the httpPOST method needs to be entered in here *@
-            url: '@Url.Action("")',
-            dataType: 'json',
-            data: JSON.stringify(package)
-        })
-    }
-    @* After changing the stage this sends the Model back with id *@
-    function Send(s){
-        const package = {
-            @* these key names need to match the Model *@
-            id: $(e.target).parent().parent().val(),
-            stage: s
-        }
-        $.ajax({
-            type: 'POST',
-            @* the name of the httpPOST method needs to be entered in here *@
-            url: '@Url.Action("")',
-            dataType: 'json',
-            data: JSON.stringify(package)
-        })
-    }
-</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
