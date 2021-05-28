@@ -5,55 +5,55 @@
 
 <div class="contianer">
     @* this row contains 3 cols that render divs that represent the tasks *@
-    <div class="row">
+   
         @foreach (TaskItemVM t in Model){
-            <div class="col-3" id="toDo">
-            @if (t.stage == 1){
-                    <div data-stage=""+t.stage >
-                        @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
-                        <div style="visibility: hidden;">t.id
-                        <div style="visibility: hidden;">t.stage
-                            <button class="delete" onclick="remove()">x</button>
-                            <p>t.Message</p>
-                            <button onclick="leftClick()">left</button>
-                            <button onclick="rightClick()">right</button>
+            <div class="row">
+                <div class="col-3" id="toDo">
+                @if (t.stage == 1){
+                        <div data-stage=""+t.stage >
+                            @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
+                            <div style="visibility: hidden;">@t.TaskID</div>
+                            <div style="visibility: hidden;">@t.stage</div>
+                                <button class="delete" onclick="remove()">x</button>
+                                <p>@t.Description</p>
+                                <button onclick="leftClick()">left</button>
+                                <button onclick="rightClick()">right</button>
                         </div>
+                }
+                </div>
+                <div class="col-3" id="inProgress">
+                @if (t.stage == 2){
+                        <div data-stage=""+t.stage >
+                            <div style="visibility: hidden;"></div>
+                            <div style="visibility: hidden;">@t.stage</div>
+                            
+                                <button class="delete" onclick="remove()">x</button>
+                                <p>@t.Description</p>
+                                <button onclick="leftClick()">left</button>
+                                <button onclick="rightClick()">right</button>
+                            
                         </div>
-                    </div>
-            }
-            </div>
-            <div class="col-3" id="inProgress">
-            @if (t.stage == 2){
-                    <div data-stage=""+t.stage >
-                        <div style="visibility: hidden;">t.id
-                        <div style="visibility: hidden;">t.stage
-                            <button class="delete" onclick="remove()">x</button>
-                            <p>t.Message</p>
-                            <button onclick="leftClick()">left</button>
-                            <button onclick="rightClick()">right</button>
+                }
+                </div>
+                <div class="col-3" id="complete">
+                @if (t.stage == 3){
+                        <div data-stage=""+t.stage >
+                            <div style="visibility: hidden;">@t.TaskID</div>
+                            <div style="visibility: hidden;">@t.stage</div>
+                                <button class="delete" onclick="remove()">x</button>
+                                <p>@t.Description</p>
+                                <button onclick="leftClick()">left</button>
+                                <button onclick="rightClick()">right</button>
+                            
                         </div>
-                        </div>
-                    </div>
-            }
-            </div>
-            <div class="col-3" id="complete">
-            @if (t.stage == 3){
-                    <div data-stage=""+t.stage >
-                        <div style="visibility: hidden;">t.id
-                        <div style="visibility: hidden;">t.stage
-                            <button class="delete" onclick="remove()">x</button>
-                            <p>t.Message</p>
-                            <button onclick="leftClick()">left</button>
-                            <button onclick="rightClick()">right</button>
-                        </div>
-                        </div>
-                    </div>
-            }
+                }
+                </div>
+
             </div>
         }
 
     </div>
-</div>
+
 
 
 @* this script sends calls to the controller via the URL Actions below *@
