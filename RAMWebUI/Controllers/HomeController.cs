@@ -9,17 +9,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Models;
 
+
 namespace RAMWebUI.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private IBussiness _bussinessLayer;
         public HomeController(ILogger<HomeController> logger, IBussiness BussinessLayer)
         {
             
             _logger = logger;
-            _BL = BussinessLayer;
+             _bussinessLayer = BussinessLayer;
         }
 
         public IActionResult Index()
@@ -28,8 +29,9 @@ namespace RAMWebUI.Controllers
         }
         public IActionResult HomeHome()
         {
-            List<TaskItemVM> taskItemVMs = BusinessLa
-            return View();
+            List<TaskItemVM> taskItemVMs = _bussinessLayer.GetAllTasks().Select(taskItem => new TaskItemVM(taskItem))
+                .ToList();
+            return View(taskItemVMs);
         }
 
         public IActionResult Privacy()
