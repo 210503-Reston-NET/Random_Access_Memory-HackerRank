@@ -33,6 +33,22 @@ namespace RAMWebUI.Controllers
                 .ToList();
             return View(taskItemVMs);
         }
+       
+        
+        public IActionResult UpdateAdd(int id)
+        {
+            TaskItem task = _bussinessLayer.GetTask(id);
+            task.stage += 1;
+            _bussinessLayer.UpdateTask(task);
+            return RedirectToAction(nameof(HomeHome));
+        }
+        public IActionResult UpdateDec(int id)
+        {
+            TaskItem task = _bussinessLayer.GetTask(id);
+            task.stage -= 1;
+            _bussinessLayer.UpdateTask(task);
+            return RedirectToAction(nameof(HomeHome));
+        }
         public ActionResult Create()
         {
             return View();

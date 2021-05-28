@@ -17,36 +17,37 @@
                                 <button class="delete" onclick="remove()">x</button>
                                 <p>@t.Description</p>
                                 <button onclick="leftClick()">left</button>
-                                <button onclick="rightClick()">right</button>
+                                @Html.ActionLink("Right", "UpdateAdd", new {id = t.TaskID})
+
                         </div>
                 }
                 </div>
                 <div class="col-3 stagebox" id="inProgress">
                 @if (t.stage == 2){
-                        <div data-stage=""+t.stage class="stage2task">
-                            <div style="visibility: hidden;"></div>
-                            <div style="visibility: hidden;">@t.stage</div>
-                            
-                                <button class="delete" onclick="remove()">x</button>
-                                <p>@t.Description</p>
-                                <button onclick="leftClick()">left</button>
-                                <button onclick="rightClick()">right</button>
-                            
-                        </div>
+                    <div data-stage="" +t.stage>
+                        <div style="visibility: hidden;"></div>
+                        <div style="visibility: hidden;">@t.stage</div>
+
+                        <button class="delete" onclick="remove()">x</button>
+                        <p>@t.Description</p>
+                        @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
+                        @Html.ActionLink("Right", "UpdateAdd", new { id = t.TaskID })
+
+                    </div>
                 }
                 </div>
                 <div class="col-3 stagebox" id="complete">
                 @if (t.stage == 3){
-                        <div data-stage=""+t.stage class="stage3task">
-                            <div style="visibility: hidden;">@t.TaskID</div>
-                            <div style="visibility: hidden;">@t.stage</div>
-                                <button class="delete" onclick="remove()">x</button>
-                                <p>@t.Description</p>
-                                <button onclick="leftClick()">left</button>
-                                <button onclick="rightClick()">right</button>
-                            
-                        </div>
-                }   
+                    <div data-stage="" +t.stage>
+                        <div style="visibility: hidden;">@t.TaskID</div>
+                        <div style="visibility: hidden;">@t.stage</div>
+                        <button class="delete" onclick="remove()">x</button>
+                        <p>@t.Description</p>
+                        @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
+                        <button onclick="rightClick()">right</button>
+
+                    </div>
+                }
                 </div>
             </div>
         }
@@ -58,6 +59,7 @@
 @* this script sends calls to the controller via the URL Actions below *@
 @* when making the controllers to handle the requests set them to recive 1 of TaskItemWM *@
 <script>
+   
     @* sets the stage value +1 *@
     function rigthClick(e){
         const stage = $(e.target).parent().val()
