@@ -110,14 +110,20 @@ body {
     border-style: double;
     background-color: #b6553b;
     border-width: thick;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 .stage2task {
     border-style: double;
     background-color: #dbcb68;
     border-width: thick;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 .stage3task {
     border-style: double;
     background-color: #2a8250;
     border-width: thick;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
