@@ -10,6 +10,7 @@
             <div class="col-3" id="toDo">
             @if (t.stage == 1){
                     <div data-stage=""+t.stage >
+                        @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
                         <div style="visibility: hidden;">t.id
                         <div style="visibility: hiddden;">t.stage
                             <button class="delete" onclick="remove()">x</button>
@@ -21,7 +22,7 @@
                     </div>
             }
             </div>
-            <div class="col-3" id="toDo">
+            <div class="col-3" id="inProgress">
             @if (t.stage == 2){
                     <div data-stage=""+t.stage >
                         <div style="visibility: hidden;">t.id
@@ -35,7 +36,7 @@
                     </div>
             }
             </div>
-            <div class="col-3" id="toDo">
+            <div class="col-3" id="complete">
             @if (t.stage == 3){
                     <div data-stage=""+t.stage >
                         <div style="visibility: hidden;">t.id
