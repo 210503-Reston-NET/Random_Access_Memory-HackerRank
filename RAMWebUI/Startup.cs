@@ -8,15 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using Microsoft.AspNetCore.Http;
 using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
-=======
 using Data;
 using Microsoft.EntityFrameworkCore;
->>>>>>> 67e6bfbe3cb582845425329029eb934687a2e5ed
 
 namespace RAMWebUI
 {

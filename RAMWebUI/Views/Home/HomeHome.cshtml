@@ -6,7 +6,7 @@
 <div class="contianer">
     @* this row contains 3 cols that render divs that represent the tasks *@
     <div class="row">
-        @foreach (t in Model){
+        @foreach (var t in Model){
             <div class="col-3" id="toDo">
             @if (t.stage == 1){
                     <div data-stage=""+t.stage >
@@ -82,7 +82,7 @@
         $.ajax({
             type: 'DELETE',
             @* the name of the httpPOST method needs to be entered in here *@
-            url: '@Url.Action({the name of method here})',
+            url: @Html.ActionLink("Delete", "Delete", new {id = 1}),
             dataType: 'json',
             data: JSON.stringify(package)
         })
@@ -97,7 +97,7 @@
         $.ajax({
             type: 'POST',
             @* the name of the httpPOST method needs to be entered in here *@
-            url: '@Url.Action({the name of method here})',
+            url: @Html.ActionLink("post?", "thing", new {id = 1}),
             dataType: 'json',
             data: JSON.stringify(package)
         })
