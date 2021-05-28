@@ -77,11 +77,7 @@ namespace RAMWebUI.Controllers
         }
 
         // GET: ../Home/Delete
-        public IActionResult Delete()
-        {
-            return View();
-        }
-
+        
         // POST: ../Home/Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
