@@ -33,7 +33,12 @@ namespace RAMWebUI.Controllers
                 .ToList();
             return View(taskItemVMs);
         }
-       
+        public IActionResult Delete(int id)
+        {
+            TaskItem tItem = _bussinessLayer.GetTask(id);
+            _bussinessLayer.RemoveTask(tItem);
+            return RedirectToAction(nameof(HomeHome));
+        }
         
         public IActionResult UpdateAdd(int id)
         {
@@ -72,11 +77,7 @@ namespace RAMWebUI.Controllers
         }
 
         // GET: ../Home/Delete
-        public IActionResult Delete()
-        {
-            return View();
-        }
-
+        
         // POST: ../Home/Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
