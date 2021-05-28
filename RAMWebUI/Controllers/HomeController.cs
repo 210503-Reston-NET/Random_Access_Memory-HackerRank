@@ -33,7 +33,23 @@ namespace RAMWebUI.Controllers
                 .ToList();
             return View(taskItemVMs);
         }
-
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TaskItemVM taskItemVM)
+        {
+            TaskItem tItem = new TaskItem();
+            tItem.Created = DateTime.Now;
+            tItem.Description = taskItemVM.Description;
+            tItem.priority = taskItemVM.priority;
+            tItem.Title = taskItemVM.Title;
+            tItem.stage = 1;
+            _bussinessLayer.AddTask(tItem);
+            return RedirectToAction(nameof(HomeHome));
+        }
         public IActionResult Privacy()
         {
             return View();
