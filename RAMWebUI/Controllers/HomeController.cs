@@ -20,7 +20,7 @@ namespace RAMWebUI.Controllers
         {
             
             _logger = logger;
-             _bussinessLayer = BussinessLayer;
+            _bussinessLayer = BussinessLayer;
         }
 
         public IActionResult Index()
@@ -52,8 +52,7 @@ namespace RAMWebUI.Controllers
         {
             try
             {
-<<<<<<< HEAD
-                _BL.RemoveTask(new TaskItem()
+                _bussinessLayer.RemoveTask(new TaskItem()
                 {
                     TaskID = task.TaskID,
                     Title = task.Title,
@@ -63,9 +62,38 @@ namespace RAMWebUI.Controllers
                     priority = task.priority,
                     stage = task.stage
                 });
-=======
-                _bussinessLayer.RemoveTask(new TaskItem() );
->>>>>>> 2f41f6b7111986dee09b470c30f84c4ac1877a3c
+                return RedirectToAction(nameof(Index));
+            } catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View();
+            }
+        }
+
+        //GET: ../Home/Add
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        //POST: ../Home/Add
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(TaskItemVM task)
+        {
+            try
+            {
+                _bussinessLayer.UpdateTask(new TaskItem()
+                {
+                    TaskID = task.TaskID,
+                    Title = task.Title,
+                    Created = task.Created,
+                    Description = task.Description,
+                    Finished = task.Finished,
+                    priority = task.priority,
+                    stage = task.stage
+                });
+                
                 return RedirectToAction(nameof(Index));
             } catch (Exception e)
             {
