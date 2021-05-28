@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAMBL", "RAMBL\RAMBL.csproj", "{A2442EF2-8A85-4C82-8973-EF4E76283788}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}.Release|x64.Build.0 = Release|Any CPU
 		{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}.Release|x86.ActiveCfg = Release|Any CPU
 		{6DD34516-CEB5-4AD3-9D04-1A0638E5747F}.Release|x86.Build.0 = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|x64.Build.0 = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Debug|x86.Build.0 = Debug|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|x64.ActiveCfg = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|x64.Build.0 = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2442EF2-8A85-4C82-8973-EF4E76283788}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
