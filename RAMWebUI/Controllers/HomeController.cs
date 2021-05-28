@@ -109,13 +109,22 @@ namespace RAMWebUI.Controllers
                     priority = task.priority,
                     stage = task.stage
                 });
-                
+
                 return RedirectToAction(nameof(Index));
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 _logger.LogError(e.Message);
                 return View();
             }
+        }
+
+        //GET: ../Home/List
+        public IActionResult List()
+        {
+            return View(_bussinessLayer.GetAllTasks()
+                .Select(task => new TaskItemVM(task))
+                .ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

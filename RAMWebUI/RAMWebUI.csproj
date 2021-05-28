@@ -14,6 +14,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -31,4 +33,7 @@
     <ProjectReference Include="..\RAMBL\RAMBL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Temp\" />
+  </ItemGroup>
 </Project>
