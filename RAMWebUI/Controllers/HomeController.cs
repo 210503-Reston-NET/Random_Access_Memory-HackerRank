@@ -33,7 +33,12 @@ namespace RAMWebUI.Controllers
                 .ToList();
             return View(taskItemVMs);
         }
-       
+        public IActionResult Delete(int id)
+        {
+            TaskItem tItem = _bussinessLayer.GetTask(id);
+            _bussinessLayer.RemoveTask(tItem);
+            return RedirectToAction(nameof(HomeHome));
+        }
         
         public IActionResult UpdateAdd(int id)
         {
