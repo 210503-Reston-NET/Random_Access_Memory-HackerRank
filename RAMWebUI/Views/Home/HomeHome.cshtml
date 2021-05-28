@@ -11,7 +11,7 @@
                 <div class="col-3 stagebox" id="toDo">
                 @if (t.stage == 1){
 
-                    <div data-stage="" +t.stage class="taskbox">
+                    <div data-stage="" +t.stage class="stage1task">
                         @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
                         <div style="visibility: hidden;">@t.TaskID</div>
                         <div style="visibility: hidden;">@t.stage</div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-3 stagebox" id="inProgress">
                 @if (t.stage == 2){
-                    <div data-stage="" +t.stage>
+                    <div data-stage="" +t.stage class="stage2task">
                         <div style="visibility: hidden;"></div>
                         <div style="visibility: hidden;">@t.stage</div>
 
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-3 stagebox" id="complete">
                 @if (t.stage == 3){
-                    <div data-stage="" +t.stage>
+                    <div data-stage="" +t.stage class="stage3task">
                         <div style="visibility: hidden;">@t.TaskID</div>
                         <div style="visibility: hidden;">@t.stage</div>
                         @Html.ActionLink("X", "Delete", new { id = t.TaskID })
