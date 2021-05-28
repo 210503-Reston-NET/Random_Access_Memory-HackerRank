@@ -10,16 +10,17 @@
             <div class="row">
                 <div class="col-3 stagebox" id="toDo">
                 @if (t.stage == 1){
-                        <div data-stage=""+t.stage class="taskbox">
-                            @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
-                            <div style="visibility: hidden;">@t.TaskID</div>
-                            <div style="visibility: hidden;">@t.stage</div>
-                                <button class="delete" onclick="remove()">x</button>
-                                <p>@t.Description</p>
-                                <button onclick="leftClick()">left</button>
-                                @Html.ActionLink("Right", "UpdateAdd", new {id = t.TaskID})
+                    <div data-stage="" +t.stage class="taskbox">
+                        @* Made 2 hidden divs to contain the values needs for the calls to the controllers *@
+                        <div style="visibility: hidden;">@t.TaskID</div>
+                        <div style="visibility: hidden;">@t.stage</div>
+                        @Html.ActionLink("X", "Delete", new { id = t.TaskID })
+                        <h1>@t.Title</h1>
+                        <p>@t.Description</p>
+                        <button onclick="leftClick()">left</button>
+                        @Html.ActionLink("Right", "UpdateAdd", new { id = t.TaskID })
 
-                        </div>
+                    </div>
                 }
                 </div>
                 <div class="col-3 stagebox" id="inProgress">
@@ -28,7 +29,8 @@
                         <div style="visibility: hidden;"></div>
                         <div style="visibility: hidden;">@t.stage</div>
 
-                        <button class="delete" onclick="remove()">x</button>
+                        @Html.ActionLink("X", "Delete", new { id = t.TaskID })
+                        <h1>@t.Title</h1>
                         <p>@t.Description</p>
                         @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
                         @Html.ActionLink("Right", "UpdateAdd", new { id = t.TaskID })
@@ -41,7 +43,8 @@
                     <div data-stage="" +t.stage>
                         <div style="visibility: hidden;">@t.TaskID</div>
                         <div style="visibility: hidden;">@t.stage</div>
-                        <button class="delete" onclick="remove()">x</button>
+                        @Html.ActionLink("X", "Delete", new { id = t.TaskID })
+                        <h1>@t.Title</h1>
                         <p>@t.Description</p>
                         @Html.ActionLink("Left", "UpdateDec", new { id = t.TaskID })
                         <button onclick="rightClick()">right</button>
