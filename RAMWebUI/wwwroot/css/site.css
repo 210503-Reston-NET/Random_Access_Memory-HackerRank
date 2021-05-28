@@ -80,16 +80,44 @@ body {
     border-style: double;
     background-color: #d65d0e;
     border-width: thick;
+    padding: 10px;
 }
 
 .stagebox
 {
     border-style: double;
-    background-color: darkgray;
+    background-color: #353c7e;
+}
+
+.stagebox a {
+    padding: 7px;
+    border-radius: 10px;
+    border-style: groove;
+    border-color: black;
+    background-color: #4a9250;
+    font-style:oblique;
+    margin: 10px;
+    margin-bottom: 20px;
 }
 
 .createbox
 {
     padding: 10px;
     background-color: darkgreen;
+}
+
+.stage1task {
+    border-style: double;
+    background-color: #b6553b;
+    border-width: thick;
+}
+.stage2task {
+    border-style: double;
+    background-color: #dbcb68;
+    border-width: thick;
+}
+.stage3task {
+    border-style: double;
+    background-color: #2a8250;
+    border-width: thick;
 }
