@@ -3,19 +3,105 @@
     ViewData["Title"] = "HomeHome";
 }
 
-<div class="col-4" id="toDo">
-    @foreach (t in Model)
-    {@if (t.stage == 1)
-        {
-            <div>
-                <button class="delete">x</button>
-                <p>Model.Message</p>
-                <button onclick="">left</button>
-                <button onclick="">right</button>
+<div class="contianer">
+    @* this row contains 3 cols that render divs that represent the tasks *@
+    <div class="row">
+        @foreach (t in Model){
+            <div class="col-3" id="toDo">
+            @if (t.stage == 1){
+                    <div data-stage=""+t.stage >
+                        <div style="visibility: hidden;">t.id
+                        <div style="visibility: hiddden;">t.stage
+                            <button class="delete" onclick="remove()">x</button>
+                            <p>t.Message</p>
+                            <button onclick="leftClick()">left</button>
+                            <button onclick="rightClick()">right</button>
+                        </div>
+                        </div>
+                    </div>
+            }
+            </div>
+            <div class="col-3" id="toDo">
+            @if (t.stage == 2){
+                    <div data-stage=""+t.stage >
+                        <div style="visibility: hidden;">t.id
+                        <div style="visibility: hiddden;">t.stage
+                            <button class="delete" onclick="remove()">x</button>
+                            <p>t.Message</p>
+                            <button onclick="leftClick()">left</button>
+                            <button onclick="rightClick()">right</button>
+                        </div>
+                        </div>
+                    </div>
+            }
+            </div>
+            <div class="col-3" id="toDo">
+            @if (t.stage == 3){
+                    <div data-stage=""+t.stage >
+                        <div style="visibility: hidden;">t.id
+                        <div style="visibility: hiddden;">t.stage
+                            <button class="delete" onclick="remove()">x</button>
+                            <p>t.Message</p>
+                            <button onclick="leftClick()">left</button>
+                            <button onclick="rightClick()">right</button>
+                        </div>
+                        </div>
+                    </div>
+            }
             </div>
         }
-}
+
+    </div>
 </div>
+
+
+@* this script sends calls to the controller via the URL Actions below *@
+@* when making the controllers to handle the requests set them to recive 1 of TaskItemWM *@
+<script>
+    @* sets the stage value +1 *@
+    function rigthClick(e){
+        const stage = $(e.target).parent().val()
+        if(stage < 3){
+            send((stage +1))
+        }
+    }
+    @* sets the stage value -1 *@
+    function leftClick(e){
+        const stage = $(e.target).parent().val()
+        if(stage >= 1){
+            send((stage -1))
+        }
+    }
+    @* sends the id in a Model to the [httpDelete] *@
+    function remove(e){
+        const package ={
+             @* these key names need to match the Model *@
+            id: $(e.target).parent().parent().val(),
+        }
+        $.ajax({
+            type: 'DELETE',
+            @* the name of the httpPOST method needs to be entered in here *@
+            url: '@Url.Action({the name of method here})',
+            dataType: 'json',
+            data: JSON.stringify(package)
+        })
+    }
+    @* After changing the stage this sends the Model back with id *@
+    function Send(s){
+        const package = {
+            @* these key names need to match the Model *@
+            id: $(e.target).parent().parent().val(),
+            stage: s
+        }
+        $.ajax({
+            type: 'POST',
+            @* the name of the httpPOST method needs to be entered in here *@
+            url: '@Url.Action({the name of method here})',
+            dataType: 'json',
+            data: JSON.stringify(package)
+        })
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
