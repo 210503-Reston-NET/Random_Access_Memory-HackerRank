@@ -41,12 +41,14 @@ steps:
       zipAfterPublish: true
       projects: '**/RAMWebUI/*.csproj'
 
-  - task: AzureRmWebAppDeployment@4
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Azure subscription 1(b9ea6d04-6500-4af6-adfa-84ac2185ff53)'
-      appType: 'webAppLinux'
-      WebAppName: 'agile88'
-      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-      RuntimeStack: 'DOTNETCORE|5.0'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    appType: 'webAppLinux'
+    WebAppName: 'agile88'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'DOTNETCORE|5.0'
+
+
+ 
 
