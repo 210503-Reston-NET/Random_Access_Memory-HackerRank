@@ -14,6 +14,7 @@ using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using Data;
 using Microsoft.EntityFrameworkCore;
+using RAMBL;
 
 namespace RAMWebUI
 {
@@ -39,6 +40,7 @@ namespace RAMWebUI
             services.AddControllersWithViews();
             services.AddDbContext<RamDBContext>(options =>options.UseNpgsql(parseElephantSQLURL(this.Configuration.GetConnectionString("RamDB"))));
             services.AddScoped<Database>();
+            services.AddScoped<IBussiness, BussinessLayer>();
             services.AddControllersWithViews();           
         }
         public static string parseElephantSQLURL(string uriString)
