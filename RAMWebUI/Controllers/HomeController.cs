@@ -52,7 +52,7 @@ namespace RAMWebUI.Controllers
         {
             try
             {
-                _BL.RemoveTask(new TaskItem() );
+                _bussinessLayer.RemoveTask(new TaskItem() );
                 return RedirectToAction(nameof(Index));
             } catch (Exception e)
             {
