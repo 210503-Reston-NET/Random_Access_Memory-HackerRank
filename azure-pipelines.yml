@@ -1,0 +1,55 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+  
+
+pool: Default
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any Cpu'
+  buildConfiguration: 'Release'
+  solution_main: 'RAMWebUI'
+  solution_root: '.'
+
+
+
+steps:
+# Restore buld and test
+  - task: DotNetCoreCLI@2
+    displayName: Restore Project Dependencies
+    inputs:
+      command: 'restore'
+      projects: '$(solution)'
+      feedsToUse: 'select'
+  
+  - task: DotNetCoreCLI@2
+    displayName: Build Projects
+    inputs:
+      command: 'build'
+      projects: '$(solution)'
+  
+  - task: DotNetCoreCLI@2
+    displayName: Publish
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      zipAfterPublish: true
+      projects: '**/RAMWebUI/*.csproj'
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'agile88'
+      appType: 'webAppLinux'
+      WebAppName: 'agile88'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      RuntimeStack: 'DOTNETCORE|5.0'
+
+
+ 
+
