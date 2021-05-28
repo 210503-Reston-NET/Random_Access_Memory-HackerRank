@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
-	  <ProjectReference Include="..\RAMBL\RAMBL.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
