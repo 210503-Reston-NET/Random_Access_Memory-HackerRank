@@ -13,8 +13,8 @@ using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using Data;
-using Microsoft.EntityFrameworkCore;
 using RAMBL;
+using Microsoft.EntityFrameworkCore;
 
 namespace RAMWebUI
 {
