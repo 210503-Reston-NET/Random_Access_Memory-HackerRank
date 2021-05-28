@@ -9,22 +9,29 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace RAMWebUI.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IBussiness _BL;
-
+        private IBussiness _bussinessLayer;
         public HomeController(ILogger<HomeController> logger, IBussiness BussinessLayer)
         {
+            
             _logger = logger;
-            _BL = BussinessLayer;
+             _bussinessLayer = BussinessLayer;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult HomeHome()
+        {
+            List<TaskItemVM> taskItemVMs = _bussinessLayer.GetAllTasks().Select(taskItem => new TaskItemVM(taskItem))
+                .ToList();
+            return View(taskItemVMs);
         }
 
         public IActionResult Privacy()
@@ -45,6 +52,7 @@ namespace RAMWebUI.Controllers
         {
             try
             {
+<<<<<<< HEAD
                 _BL.RemoveTask(new TaskItem()
                 {
                     TaskID = task.TaskID,
@@ -55,6 +63,9 @@ namespace RAMWebUI.Controllers
                     priority = task.priority,
                     stage = task.stage
                 });
+=======
+                _bussinessLayer.RemoveTask(new TaskItem() );
+>>>>>>> 2f41f6b7111986dee09b470c30f84c4ac1877a3c
                 return RedirectToAction(nameof(Index));
             } catch (Exception e)
             {
